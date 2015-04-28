@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using MileagePro.ApiModels;
 using MileagePro.SL.Interfaces;
 using MileagePro.SL.Services;
@@ -35,6 +36,15 @@ namespace MileagePro.ApiControllers
 			};
 
 			return Ok(model);
+		}
+
+		[HttpGet]
+		public IHttpActionResult GetAll()
+		{
+			var contracts = dataPointService.GetDataPoints();
+
+			var models = contracts.Select(x => new DataPoint(x)).ToList();
+			return Ok(models);
 		}
 	}
 }

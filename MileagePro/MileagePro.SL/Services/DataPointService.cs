@@ -58,9 +58,12 @@ namespace MileagePro.SL.Services
 			{
 				dataPoint.Date = DateTime.Now;
 
-				// dataPoint.OdometerReading = previous datapoint's odometer reading - current reading 
-				// (need to check if there is a previous datapoint)
-				dataPoint.DistanceSinceLastFill = 500;
+				var existingDataPoints = session.Query<MileageDataPoint>().ToList();
+				if (existingDataPoints.Any())
+				{
+					var previousDataPoint = existingDataPoints.Last();
+					dataPoint.DistanceSinceLastFill = dataPoint.OdometerReading - previousDataPoint.OdometerReading;
+				}
 
 				dataPoint.PricePerGallon = dataPoint.TotalCost / dataPoint.GallonsPurchased;
 

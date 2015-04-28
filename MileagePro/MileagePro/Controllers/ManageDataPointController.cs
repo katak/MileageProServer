@@ -58,7 +58,7 @@ namespace MileagePro.Controllers
 		// GET: DataPoint/Create
 		public ActionResult Create()
 		{
-			return View();
+			return View(new DataPointModel());
 		}
 
 		// POST: DataPoint/Create

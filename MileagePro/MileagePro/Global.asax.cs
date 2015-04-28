@@ -15,9 +15,9 @@ namespace MileagePro
 		{
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-			WebApiConfig.Register(GlobalConfiguration.Configuration);
 		}
 
 		public static readonly Lazy<IDocumentStore> Store = new Lazy<IDocumentStore>(CreateStore);
