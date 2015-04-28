@@ -1,0 +1,55 @@
+﻿@model MileagePro.Models.DataPointModel
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Datapoint Details</h2>
+
+<div>
+	<h4>MileageDataPoint</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Date)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Date)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.OdometerReading)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.OdometerReading)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.GallonsPurchased)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.GallonsPurchased)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.TotalCost)
+		</dt>
+		<dd>
+			@String.Format("{0:c}", Model.TotalCost)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.DistanceSinceLastFill)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.DistanceSinceLastFill)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.PricePerGallon)
+		</dt>
+		<dd>
+			@String.Format("{0:c}", Model.PricePerGallon)
+		</dd>
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>
